@@ -61,11 +61,36 @@ int main()
 		product = last_digit*product;
 		sum = sum+ last_digit;
 		n = n/10;
-	
+
 	}
 	int difference = product - sum;
 	cout<<"product is :"<<product<<endl;
 	cout<<"sum is :"<<sum<<endl;
 	cout<<"difference is :"<<difference<< endl;
+	return 0;
+}
+
+//############################## QUESTION GIVE A SIGNED 32_BIT INTEGER X, RETURN X WITH ITS DIGITS REVERSED. 
+//IF REVERSING X CUSES THE VALUE TO GO OUTSIDE THE SIGNED 32_BIT INTEGER RANGE [-2*(32),2(31)-1],THEN RETURN 0 #################################
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the number"<<n<<endl;
+	cin>>n;
+    int last_digit,ans=0;
+	while(n!=0)
+	{
+		int last_digit = n%10;
+	 if(ans > INT_MAX/10 || ans < INT_MIN/10)
+	 {
+	 	return 0;
+	 }
+	 ans = (ans * 10) + last_digit;
+	 n=n/10;
+	}
+	cout<<"anser is :"<<ans<<endl;
 	return 0;
 }
