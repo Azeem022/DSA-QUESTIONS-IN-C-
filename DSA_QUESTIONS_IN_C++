@@ -1,0 +1,71 @@
+//####################################### QUESTION CONVERT DECIMAL TO BINARY ####################################################################
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the number"<<n<<endl;
+	cin>>n;
+	int ans = 0;
+	int i = 0;
+	while(n!=0)
+	{
+		int bit = n & 1;
+		ans = (bit * pow(10,i)+ans);
+		n = n>>1;
+		i++;
+	}
+	cout<<"Answer is :"<<ans<< endl;
+	return 0;
+}
+
+//#######################################QUESTION BINARY TO DECIMAL####################################################################
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the number"<<n<<endl;
+	cin>>n;
+	int ans = 0;
+	int i = 0;
+	while(n!=0)
+	{
+		int digit = n%10;
+		if(digit == 1)
+		{
+			ans = ans + pow(2,i);
+		}
+		n = n/10;
+		i++;
+	}
+	cout<<"Answer is :"<<ans<< endl;
+	return 0;
+}
+
+//#######################################QUESTION GIVE AN INTEGER NUMBER N,RETURN THE DIFFERENCE BETWEEN THE PRODUCT OF ITS DIGIT AND SUM OF ITS DIGIT####################################################################
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the number"<<n<<endl;
+	cin>>n;
+    int last_digit,product=1,sum=0;
+	while(n!=0)
+	{
+		int last_digit = n%10;
+		product = last_digit*product;
+		sum = sum+ last_digit;
+		n = n/10;
+	
+	}
+	int difference = product - sum;
+	cout<<"product is :"<<product<<endl;
+	cout<<"sum is :"<<sum<<endl;
+	cout<<"difference is :"<<difference<< endl;
+	return 0;
+}
