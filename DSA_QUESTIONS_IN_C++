@@ -20,6 +20,35 @@ int main()
 	return 0;
 }
 
+                          OR         OR         OR          OR            OR           OR             OR             OR
+
+
+//################################## DECIMAL TO BINARY #################################################
+#include<iostream>
+using namespace std;
+int main()
+{
+    int num;
+    cout<<"Enter the number:";
+    cin>>num;
+    int rem, ans=0,mul=1;
+    while(num>0)
+    {
+    	//remainder
+    	rem = num%2;
+    	//quotient
+    	num = num/2;
+    	//ans
+    	ans= rem*mul+ans;
+    	//mul
+    	mul=mul*10;
+	}
+	cout<<"Answer is :"<<ans;
+	return 0;
+}
+
+
+
 //#######################################QUESTION BINARY TO DECIMAL####################################################################
 #include<iostream>
 #include<math.h>
@@ -92,30 +121,5 @@ int main()
 	 n=n/10;
 	}
 	cout<<"anser is :"<<ans<<endl;
-	return 0;
-}
-
-
-//################################## DECIMAL TO BINARY #################################################
-#include<iostream>
-using namespace std;
-int main()
-{
-    int num;
-    cout<<"Enter the number:";
-    cin>>num;
-    int rem, ans=0,mul=1;
-    while(num>0)
-    {
-    	//remainder
-    	rem = num%2;
-    	//quotient
-    	num = num/2;
-    	//ans
-    	ans= rem*mul+ans;
-    	//mul
-    	mul=mul*10;
-	}
-	cout<<"Answer is :"<<ans;
 	return 0;
 }
