@@ -47,7 +47,7 @@ int main()
 	return 0;
 }
 
-
+TRICK FOR CONVERSION OF BINARY TO DECIMAL AND DECIMAL TO BINARY ONLY YOU HAVE TO CHANGE 2 IN PLACE OF 10 AND 10 IN PLACE OF 2.
 
 //#######################################QUESTION BINARY TO DECIMAL####################################################################
 #include<iostream>
