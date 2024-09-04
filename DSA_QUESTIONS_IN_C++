@@ -74,6 +74,33 @@ int main()
 	return 0;
 }
 
+                                      OR         OR           OR            OR                 OR                  OR                     OR
+
+//################################## BINARY TO DECIMAL #################################################
+#include<iostream>
+using namespace std;
+int main()
+{
+    int num;
+    cout<<"Enter the number:";
+    cin>>num;
+    int rem, ans=0,mul=1;
+    while(num>0)
+    {
+    	//remainder
+    	rem = num%10;
+    	//quotient
+    	num = num/10;
+    	//ans 
+    	ans= rem*mul+ans;
+    	//mul
+    	mul=mul*2;
+	}
+	cout<<"Answer is :"<<ans;
+	return 0;
+}
+
+
 //#######################################QUESTION GIVE AN INTEGER NUMBER N,RETURN THE DIFFERENCE BETWEEN THE PRODUCT OF ITS DIGIT AND SUM OF ITS DIGIT####################################################################
 #include<iostream>
 #include<math.h>
