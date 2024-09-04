@@ -150,3 +150,31 @@ int main()
 	cout<<"anser is :"<<ans<<endl;
 	return 0;
 }
+
+
+//################################## GIVEN AN INTEGER NUM, REPEATIDLY ADD ALL ITS DIGIT UNTIL THE RESULT HAS ONLY ONE DIGIT, AND RETURN IT. #################################################
+#include<iostream>
+using namespace std;
+int main()
+{
+    int num;
+    cout<<"Enter the number:";
+    cin>>num;
+    while(num>9)
+    {
+    	int rem, ans=0;
+    	while(num>0)
+    {
+    	//remainder
+    	rem = num%10;
+    	//quotient  
+    	num = num/10;
+    	//ans 
+    	ans= rem+ans;
+    	//mul
+	}
+	 num=ans;
+	}
+	cout<<num;
+	return 0;
+}
