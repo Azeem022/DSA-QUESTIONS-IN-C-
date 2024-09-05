@@ -266,3 +266,27 @@ int main()
 	cout<<"Not Palendrome"<<endl;
 	return 0;
 }
+
+//################################## COMPLEMENT OF AN INTEGER. #################################################
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter the value of n:"<<endl;
+    cin>>n;
+    if(n==0)
+    return 0;
+    int ans=0,rem,mul=1;
+    while(n!=0)
+    {
+    	rem=n%2;
+    	rem=rem^1;
+    	n=n/2;
+    	ans = ans+rem*mul;
+    	mul=mul*2;
+	}
+	cout<<ans;
+	return 0;
+}
