@@ -225,3 +225,16 @@ int main()
 	cout<<"yes it is the power of 2"<<endl;
 	return 0;
 }
+
+//################################## SQUARE ROOT OF N NUMBER. #################################################
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the value of n:"<<endl;
+	cin>>n;
+	cout<<sqrt(n);
+	return 0;
+}
