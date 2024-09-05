@@ -238,3 +238,31 @@ int main()
 	cout<<sqrt(n);
 	return 0;
 }
+
+
+//################################## PALENDROME OR NOT. #################################################
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int x;
+	cout<<"Enter the value of x:"<<endl;
+	cin>>x;
+	if(x<0)
+	return 0;
+	int num = x, rem, ans=0;
+	while(num!=0)
+	{
+		rem = num%10;
+		num =  num/10;
+		if(ans>INT_MAX)
+		return 0;
+		ans = ans*10+rem;
+	};
+	if(ans==x)
+	cout<<"Palendrome"<<endl;
+	else
+	cout<<"Not Palendrome"<<endl;
+	return 0;
+}
