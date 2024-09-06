@@ -290,3 +290,43 @@ int main()
 	cout<<ans;
 	return 0;
 }
+
+
+//################################## ARMSTRONG NUMBER OR NOT WITH HOW MANY DIGITS. #################################################
+#include<iostream>
+using namespace std;
+#include<cmath>
+int countdigit(int n)
+{
+	int count = 0;
+	while(n!=0)
+	{
+		count ++;
+		n=n/10;
+	}
+	return count;
+}
+bool Armstrong(int num , int digit)
+{
+	int n=num,ans=0,rem;
+	while(n!=0)
+	{
+		rem=n%10;
+		n=n/10;
+		ans=ans+pow(rem,digit);
+	}
+	if(ans==num)
+	return 1;
+	else
+	return 0;
+}
+int main()
+{
+	int num;
+	cout<<"Enter the value of number:"<<endl;
+	cin>>num;
+	int digit = countdigit(num);
+	cout<<"number of digit:"<<countdigit(num)<<endl;;
+	cout<<"Is Armstrong number:"<<Armstrong(num,digit);//?"yes":"no";
+	return 0;
+}
