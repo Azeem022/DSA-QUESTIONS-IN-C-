@@ -439,3 +439,27 @@ int main()
 	cout<<"second largest element is:"<<second<<endl;
 	return 0;
 }
+
+//===================================== MISSING ELEMENT IN AN ARRAY =======================================
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the size of an array:"<<endl;
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	int sum=0;
+	//Largest element
+	for(int i=0;i<n-1;i++)
+	{
+		sum+=arr[i];
+	}
+	int ans = n*(n+1)/2;
+	cout<<"missing element is:"<< ans - sum;
+	return 0;
+}
