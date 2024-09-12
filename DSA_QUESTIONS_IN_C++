@@ -454,7 +454,6 @@ int main()
 		cin>>arr[i];
 	}
 	int sum=0;
-	//Largest element
 	for(int i=0;i<n-1;i++)
 	{
 		sum+=arr[i];
