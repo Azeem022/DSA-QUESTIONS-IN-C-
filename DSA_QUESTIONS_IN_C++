@@ -491,6 +491,7 @@ int main()
 	int arr[6] = { 10,8,6,4,2,1};
 	for(int i=0;i<5;i++)
 	{
+                	//it assume that the index which stored the smallest element initially 
 		int index = i;
 		for(int j=i+1;j<6;j++)
 		{
