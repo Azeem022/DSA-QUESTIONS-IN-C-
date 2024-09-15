@@ -650,3 +650,33 @@ int main()
 	cout<<"square root of "<<n<<" is : "<<sqrt(n) <<endl;
 	return 0;
 }
+
+//============================PEAK INDEX IN A MOUNTAIN ARRAY ==================================
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the size of an array:"<<endl;
+	cin>>n;
+	cout<<"fill your array element:"<<endl;
+	int arr[1000];
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	} 
+	 int start = 0, end = n-1, mid;
+	 while(start <= end)
+	 {
+	 	mid = end+(start-end)/2;
+	 	//Peak element
+	 	if(arr[mid] > arr[mid-1] && arr[mid] < arr[mid+1])
+	 	return mid;
+	 	else if(arr[mid]>arr[mid-1])
+	 	start = mid + 1;
+	 	else
+	 	end = mid -1;
+	 }
+	 cout<<"Your peak element on " <<mid <<" position";
+	return 0;
+}
