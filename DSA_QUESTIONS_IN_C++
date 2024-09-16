@@ -680,3 +680,37 @@ int main()
 	 cout<<"Your peak element on " <<mid <<" position";
 	return 0;
 }
+
+//===========================================ROTATED MINIMUM SORTED ARRAY ==========================================================
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the size of an array:"<<endl;
+	cin>>n;
+	cout<<"Enter your "<< n <<" array"<<endl;
+	int arr[n];
+	for(int i =0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	int start =0, end = n-1, ans = arr[0];
+	while(start<=end)
+	{
+		int mid = start+(end-start)/2;
+		
+		//left side sorted array
+		if(arr[mid] >= arr[0])
+		start = mid + 1;
+		
+		//right side sorted
+		else
+		{
+			ans = arr[mid];
+			end = mid - 1;
+		}
+	}
+	cout<< ans;
+	return 0;
+}
