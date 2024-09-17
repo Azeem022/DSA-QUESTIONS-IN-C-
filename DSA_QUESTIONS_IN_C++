@@ -781,3 +781,97 @@ int main() {
 
     return 0;
 }
+
+
+//====================================kth MISSING POSITIVE INTEGER IN BINARY SEARCH ROTATED ARRAY =========================
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to count the number of missing positive integers up to a given value
+int countMissingUpTo(const vector<int>& arr, int value) {
+    int missingCount = 0;
+    int n = arr.size();
+    int start = 0;
+    int end = n - 1;
+
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        if (arr[mid] <= value) {
+            missingCount = arr[mid] - (mid + 1);  // Calculate the missing count up to arr[mid]
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    return missingCount;
+}
+
+// Function to find the kth missing positive integer in a rotated sorted array
+int findKthMissingPositive(const vector<int>& arr, int k) {
+    int n = arr.size();
+    int start = 1;  // Start with the first positive integer
+    int end = arr[n - 1] + k;  // Upper bound to search
+
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int missingCount = countMissingUpTo(arr, mid);
+
+        if (missingCount < k) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    return start;
+}
+
+// Function to find the index of the smallest element (rotation point) in a rotated sorted array
+int findRotationPoint(const vector<int>& arr) {
+    int start = 0;
+    int end = arr.size() - 1;
+
+    while (start < end) {
+        int mid = start + (end - start) / 2;
+        if (arr[mid] > arr[end]) {
+            start = mid + 1;
+        } else {
+            end = mid;
+        }
+    }
+
+    return start;
+}
+
+int main() {
+    int n, k;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    vector<int> arr(n);
+
+    cout << "Enter the elements of the rotated sorted array: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter the value of k: ";
+    cin >> k;
+
+    int rotationPoint = findRotationPoint(arr);
+    vector<int> sortedArr;
+
+    // Construct sorted array from rotation point
+    for (int i = rotationPoint; i < n; ++i) {
+        sortedArr.push_back(arr[i]);
+    }
+    for (int i = 0; i < rotationPoint; ++i) {
+        sortedArr.push_back(arr[i]);
+    }
+
+    int result = findKthMissingPositive(sortedArr, k);
+    cout << "The " << k << "th missing positive integer is: " << result << endl;
+
+    return 0;
+}
