@@ -871,7 +871,7 @@ int main() {
     }
 
     int result = findKthMissingPositive(sortedArr, k);
-    cout << "The " << k << "th missing positive integer is: " << result << endl;
+    cout << "The " << k << "th missing positive integer is: " << result-1 << endl;
 
     return 0;
 }
