@@ -828,7 +828,7 @@ int findKthMissingPositive(const vector<int>& arr, int k) {
     return start;
 }
 
-// Function to find the index of the smallest element (rotation point) in a rotated sorted array
+// ==========================================Function to find the index of the smallest element (rotation point) in a rotated sorted array================================================
 int findRotationPoint(const vector<int>& arr) {
     int start = 0;
     int end = arr.size() - 1;
@@ -872,6 +872,79 @@ int main() {
 
     int result = findKthMissingPositive(sortedArr, k);
     cout << "The " << k << "th missing positive integer is: " << result-1 << endl;
+
+    return 0;
+}
+//==========================================you have N book, each with A[I] number of pages. M students need to be allocated contiguous books , with each student at-least one book. Out of permutations, the goal is to find the permutation where the student with the most books allocated to him gets the minimum number of pages out of all possible permutation. Return -1 if a valid assignment is not possible ====================
+#include <iostream>
+#include <vector>
+#include <numeric>
+using namespace std;
+
+bool isFeasible(const vector<int>& A, int M, int maxPages) {
+    int studentCount = 1;
+    int currentPages = 0;
+
+    for (int pages : A) {
+        if (pages > maxPages) {
+            return false; // A single book cannot exceed maxPages
+        }
+        
+        if (currentPages + pages > maxPages) {
+            studentCount++; // Need to allocate to a new student
+            currentPages = pages; // Start with the current book
+            if (studentCount > M) {
+                return false; // More students than allowed
+            }
+        } else {
+            currentPages += pages; // Add pages to current student's total
+        }
+    }
+
+    return true; // Feasible to allocate books under current maxPages
+}
+
+int allocateBooks(const vector<int>& A, int M) {
+    int n = A.size();
+    if (n < M) {
+        return -1; // Not enough books for students
+    }
+
+    int low = *max_element(A.begin(), A.end()); // Maximum single book pages
+    int high = accumulate(A.begin(), A.end(), 0); // Total pages
+
+    int result = high; // Initialize result
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (isFeasible(A, M, mid)) {
+            result = mid; // Found a feasible allocation
+            high = mid - 1; // Try for a better (lower) maximum
+        } else {
+            low = mid + 1; // Increase maximum pages
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    int n, m;
+    cout << "Enter the number of books: ";
+    cin >> n;
+    vector<int> A(n);
+
+    cout << "Enter the number of pages in each book: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> A[i];
+    }
+
+    cout << "Enter the number of students: ";
+    cin >> m;
+
+    int result = allocateBooks(A, m);
+    cout << "The minimum number of pages allocated to the student with the most pages is: " << result << endl;
 
     return 0;
 }
