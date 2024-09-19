@@ -948,3 +948,80 @@ int main() {
 
     return 0;
 }
+
+// ==============================  PAINTER PARTITION PROBLEM  ====================================================================
+#include <iostream>
+#include <numeric>
+#include <algorithm> // For std::max
+using namespace std;
+
+// Function to check if it's feasible to allocate books to students
+bool isFeasible(int A[], int n, int M, int maxPages) {
+    int studentCount = 1; // Start with one student
+    int currentPages = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (A[i] > maxPages) {
+            return false; // A single book cannot exceed maxPages
+        }
+        
+        // Check if adding this book exceeds the limit
+        if (currentPages + A[i] > maxPages) {
+            studentCount++; // Need to allocate to a new student
+            currentPages = A[i]; // Start with the current book
+            if (studentCount > M) {
+                return false; // More students than allowed
+            }
+        } else {
+            currentPages += A[i]; // Add pages to the current student's total
+        }
+    }
+
+    return true; // Feasible to allocate books under current maxPages
+}
+
+// Function to allocate books and minimize the maximum pages
+int allocateBooks(int A[], int n, int M) {
+    if (n < M) {
+        return -1; // Not enough books for students
+    }
+
+    int low = *max_element(A, A + n); // Maximum single book pages
+    int high = accumulate(A, A + n, 0); // Total pages
+
+    int result = high; // Initialize result
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (isFeasible(A, n, M, mid)) {
+            result = mid; // Found a feasible allocation
+            high = mid - 1; // Try for a better (lower) maximum
+        } else {
+            low = mid + 1; // Increase maximum pages
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    int n, m;
+
+    cout << "Enter the number of books: ";
+    cin >> n;
+    int A[n];  // Declare an array of size n
+
+    cout << "Enter the number of pages in each book: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> A[i];
+    }
+
+    cout << "Enter the number of students: ";
+    cin >> m;
+
+    int result = allocateBooks(A, n, m);
+    cout << "The minimum number of pages allocated to the student with the most pages is: " << result << endl;
+
+    return 0;
+}
