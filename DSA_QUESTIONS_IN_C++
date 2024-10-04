@@ -1221,3 +1221,39 @@ int main()
 	cout<<endl;
 	return 0;
 }
+
+//================================= TWO POINTERS IN AN ARRAY========================================
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Enter the length of array :"<<endl;
+	cin>>n;
+	int arr[1000];
+	for(int i=0; i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	int start = 0, end = n-1, target = 22;
+//	bool found = false;
+	while(start < end)
+	{
+		if(arr[start] + arr[end]==target)
+		{
+			cout<<"pair found "<<arr[start]<<" and "<<arr[end]<<" and the sum of these two pair is :"<<arr[start]+ arr[end]<<endl;
+		//	found = true;
+			break;
+		}
+		else if(arr[start] + arr[end] < target)
+		{
+			start++;
+		}
+		else
+	    {
+	       end--;
+		}
+	}
+	return 0;
+}
