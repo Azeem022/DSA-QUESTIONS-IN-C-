@@ -1299,3 +1299,41 @@ int main()
 	cout<<divide(v);
 	return 0;
 }
+
+
+//=====================LARGEST SUM CONTIGUOUS SUBARRAY(KADANE'S ALGORITHM)========================
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+long long maxSubarraySum(int arr[], int n)
+{
+	long long maxi = INT_MIN, prefix = 0;
+	for(int i = 0; i<n; i++)
+	{
+		prefix = prefix + arr[i];
+		maxi = max(prefix, maxi);
+		if(prefix<0)
+		{
+			prefix = 0;
+		}
+	}
+	return maxi;
+}
+
+int main()
+{
+	int n,maxi;
+	cout<<"Enter the size of an array : "<<endl;
+	int arr[1000];
+	cin>>n;
+	cout<<"Enter the element which you want to insert : "<<endl;
+	for(int i=0; i<n; i++)
+	{
+		cin>>arr[i];
+	}
+	long long result = maxSubarraySum(arr, n);
+	cout<<"your ans is : "<<result;
+	return 0;
+}
