@@ -1473,3 +1473,46 @@ int main()
 	}
 	return 0;
 }
+
+
+============LINKED LIST==============LINKED LIST=====================LINKED LIST========================LINKED LIST===========================
+============LINKED LIST==============LINKED LIST=====================LINKED LIST========================LINKED LIST===========================
+============LINKED LIST==============LINKED LIST=====================LINKED LIST========================LINKED LIST===========================
+============LINKED LIST==============LINKED LIST=====================LINKED LIST========================LINKED LIST===========================
+
+//===========================SIMPLE LINKED LIST PROGRAM===================
+#include<iostream>
+using namespace std;
+
+//Linkedlist Node
+struct node{
+	int data;
+	node *next;
+};
+
+void printlist(node *head)
+{
+	while(head!=NULL)
+	{
+		cout<<head->data<<endl;
+		head = head->next;
+	}
+}
+
+int main()
+{
+	node *head = new node();
+	node *second = new node();
+	node *third = new node();
+	
+	head->data = 5;
+	head->next = second;
+	
+	second->data = 7;
+	second->next = third;
+	
+	third->data = 9;
+	third->next = NULL;
+	
+	printlist(head);
+}  
