@@ -1540,7 +1540,7 @@ void printlist(node *head)
 	cout<<"No. of element in linked list is : "<<count<<endl;
 }
 
-void push(node **head_ref, int newData)
+void push(node **head_ref, int newData)  //head_ref bhi head ka address store kr rha iska mtlb head_ref bhi indirectly head hi hai
 {
 	node *newNode = new node();
 	newNode -> data = newData;
