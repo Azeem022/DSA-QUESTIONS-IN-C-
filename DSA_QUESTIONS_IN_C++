@@ -1839,3 +1839,88 @@ int main()
 	}
 	cout<<"NULL";
 }
+
+
+//========================================DELETE NODE FROM MIDDLE IN THE LINKEDLIST (MIDDLE,START,END)=================================
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node *next;
+
+    Node(int value) {
+        data = value;
+        next = NULL;
+    }
+};
+
+Node* DeleteNode(Node* head, int x) {
+    if (head == NULL) return NULL; // Check for empty list
+
+    // If deleting the head node
+    if (x == 1) {
+        Node *temp = head;
+        head = head->next;
+        delete temp; // Correctly delete the node
+        return head;
+    }
+
+    Node *curr = head;
+    Node *prev = NULL;
+
+    // Traverse to the node before the one to be deleted
+    while (x-- >= 0 && curr != NULL) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    // If curr is NULL, x was out of bounds
+    if (curr == NULL) return head;
+
+    // Delete the node
+    prev->next = curr->next;
+    delete curr;
+
+    return head;
+}
+
+void PrintList(Node* head) {
+    Node *temp = head;
+    while (temp != NULL) {
+        cout << temp->data << "->";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+int main() {
+    Node *Head = NULL;
+
+    // Creating linked list from an array
+    int arr[] = {2, 4, 6, 8, 10};
+    for (int i=0;i<5;i++) {
+        Node* newNode = new Node(arr[i]);
+        newNode->next = Head;
+        Head = newNode;
+    }
+
+    cout << "Original List: ";
+    PrintList(Head);
+
+    // Deleting the last node (which is the 5th node, in this case)
+    Head = DeleteNode(Head, 1);
+
+    cout << "List after deleting last node: ";
+    PrintList(Head);
+
+    // Cleanup: Free remaining nodes (if necessary)
+    while (Head != NULL) {
+        Node *temp = Head;
+        Head = Head->next;
+        delete temp;
+    }
+
+    return 0;
+}
