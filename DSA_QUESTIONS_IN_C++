@@ -1924,3 +1924,96 @@ int main() {
 
     return 0;
 }
+
+
+//=======================================REVERSE OF LINKEDLIST USING ARRAY =====================================================
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node *next;
+
+    Node(int value) {
+        data = value;
+        next = NULL;
+    }
+};
+
+// Function to reverse the linked list using an array
+Node* ReverseLinkedList(Node* head) {
+    if (head == NULL) return NULL;
+
+    // Step 1: Calculate the length of the linked list
+    int length = 0;
+    Node* temp = head;
+    while (temp != NULL) {
+        length++;
+        temp = temp->next;
+    }
+
+    // Step 2: Create an array to store the elements
+    int* arr = new int[length];
+    temp = head;
+    for (int i = 0; i < length; i++) {
+        arr[i] = temp->data;
+        temp = temp->next;
+    }
+
+    // Step 3: Reverse the array
+    for (int i = 0; i < length / 2; i++) {
+        swap(arr[i], arr[length - i - 1]);
+    }
+
+    // Step 4: Rebuild the linked list from the reversed array
+    Node* newHead = new Node(arr[0]);
+    Node* current = newHead;
+    for (int i = 1; i < length; i++) {
+        current->next = new Node(arr[i]);
+        current = current->next;
+    }
+
+    // Clean up the allocated array
+    delete[] arr;
+
+    return newHead;
+}
+
+// Function to print the linked list
+void PrintList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+// Main function
+int main() {
+	
+	Node *Head = NULL;
+     int arr[] = {2, 4, 6, 8, 10};
+    for (int i=0;i<5;i++) {
+        Node* newNode = new Node(arr[i]);
+        newNode->next = Head;
+        Head = newNode;
+    }
+    cout << "Original List: ";
+    PrintList(Head);
+
+    Head = ReverseLinkedList(Head);
+
+    cout << "Reversed List: ";
+    PrintList(Head);
+
+    // Cleanup: Free remaining nodes
+    while (Head != NULL) {
+        Node* temp = Head;
+        Head = Head->next;
+        delete temp;
+    }
+
+    return 0;
+}
