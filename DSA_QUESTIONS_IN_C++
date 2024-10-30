@@ -2224,3 +2224,57 @@ int main() {
 ============DOUBLY LINKED LIST==============DOUBLY LINKED LIST=====================DOUBLY LINKED LIST========================DOUBLY LINKED LIST===========================
 ============DOUBLY LINKED LIST==============DOUBLY LINKED LIST=====================DOUBLY LINKED LIST========================DOUBLY LINKED LIST===========================
 ============DOUBLY LINKED LIST==============DOUBLY LINKED LIST=====================DOUBLY LINKED LIST========================DOUBLY LINKED LIST===========================
+
+//========================================INSERTION AT THE BEGNING OF DOUBLY LINKED LIST ===========================================================
+#include<iostream>
+using namespace std;
+
+
+class Node
+{
+	public: 
+	int data;
+	Node *next;
+	Node* prev;
+	
+	Node(int value)
+	{
+		data = value;
+		next = NULL;
+		prev = NULL;
+	}
+};
+
+
+int main()
+{
+	Node *Head , *temp;
+	temp = Head = NULL;
+	
+	int arr[] = {2,4,6,8,10};
+	
+	for(int i=0;i<5;i++)
+	{
+		if(Head == NULL)
+		{
+			Head = new Node(arr[i]);
+			temp = Head;
+		}
+		
+		else
+		{
+			Node*temp = new Node(arr[i]);
+			temp->next=Head;
+			Head->prev = temp;
+			Head = temp;
+		}
+	}
+	
+	
+	while(Head!=NULL)
+	{
+		cout<<Head->data<<"->";
+		Head = Head->next;
+	}
+	cout<<"NULL";
+}
