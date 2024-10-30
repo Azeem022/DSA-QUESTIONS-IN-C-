@@ -2404,3 +2404,97 @@ int main()
 	}
 	cout<<"NULL";
 }
+
+
+
+//*************************************************************INSERTION AT MIDDLE(ANY POSITION) IN DOUBLY LINKEDLIST ********************************************************************
+#include<iostream>
+using namespace std;
+
+
+class Node
+{
+	public: 
+	int data;
+	Node *next;
+	Node* prev;
+	
+	Node(int value)
+	{
+		data = value;
+		next = NULL;
+		prev = NULL;
+	}
+};
+
+
+int main()
+{
+	Node *Head , *tail;
+	tail = Head = NULL;
+	
+	int arr[] = {2,4,6,8,10};
+	
+	for(int i=0;i<5;i++)
+	{
+		if(Head == NULL)
+		{
+			Head = new Node(arr[i]);
+			tail = Head;
+		}
+		
+		else
+		{
+			Node*temp = new Node(arr[i]);
+			tail->next=temp;
+			temp->prev = tail;
+			tail = temp;
+		}
+	}
+	int pos= 5;
+	//insert at start
+	if(pos ==0)
+	{
+		//if linkedlist doesnt exist
+		if(Head==NULL)
+		{
+			Head = new Node(5);
+		}
+		//if exist
+		else
+		{
+			Node *temp =new Node(5);
+			temp->next = Head;
+			Head->prev = temp;
+			Head = temp;
+		}
+	}
+	else
+	{
+		Node*curr = Head;
+    	while(--pos)
+	    {
+		    curr = curr->next;
+	    };
+	    //insert at end;
+	    if(curr->next==NULL)
+	    {
+	    	Node *temp = new Node(5);
+	    	temp->prev = curr;
+	    	curr->next = temp;
+		}
+	    Node *temp = new Node(5);
+	    temp->next=curr->next;
+	    temp->prev=curr;
+	    curr->next=temp;
+	    temp->next->prev=temp;
+	    Node * trav = Head;
+	}
+	Node *trav = Head;
+	while(trav!=NULL)
+	{
+		cout<<trav->data<<"->";
+		trav = trav->next;
+	}
+	cout<<"NULL";
+}
