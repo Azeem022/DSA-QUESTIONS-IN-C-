@@ -2280,6 +2280,76 @@ int main()
 }
 
 
+//********************************************************THIS IS THE BEST EXAMPLE OF INSERTION AT START***********************************************************************************
+#include<iostream>
+using namespace std;
+
+
+class Node
+{
+	public: 
+	int data;
+	Node *next;
+	Node* prev;
+	
+	Node(int value)
+	{
+		data = value;
+		next = NULL;
+		prev = NULL;
+	}
+};
+
+
+int main()
+{
+	Node *Head , *tail,*temp;
+	tail = Head = NULL;
+	
+	int arr[] = {2,4,6,8,10};
+	
+	for(int i=0;i<5;i++)
+	{
+		if(Head == NULL)
+		{
+			Head = new Node(arr[i]);
+			tail = Head;
+		}
+		
+		else
+		{
+			Node*temp = new Node(arr[i]);
+			tail->next=temp;
+			temp->prev = tail;
+			tail = temp;
+		}
+	}
+	
+	if(Head == NULL)
+		{
+			Head = new Node(5);
+			temp = Head;
+		}
+		
+		else
+		{
+			Node*temp = new Node(5);
+			temp->next=Head;
+			Head->prev = temp;
+			Head = temp;
+		}
+	
+	Node * trav = Head;
+	while(trav!=NULL)
+	{
+		cout<<trav->data<<"->";
+		trav = trav->next;
+	}
+	cout<<"NULL";
+}
+
+
+
 //========================================INSERTION AT THE END OF DOUBLY LINKED LIST ===========================================================
 
 #include<iostream>
