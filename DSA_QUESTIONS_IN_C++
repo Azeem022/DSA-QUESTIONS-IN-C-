@@ -2936,3 +2936,23 @@ int main()
 	cout<<S.IsSize()<<endl;
 	cout<<S.IsEmpty()<<endl;
 }
+
+
+//=============================stack with STL inbuilt liberary=======================
+#include<iostream>
+#include<stack>
+using namespace std;
+
+int main()
+{
+	stack<int>azeem;
+	azeem.push(1);
+	azeem.push(2);
+	azeem.push(3);
+	azeem.push(4);
+	azeem.push(5);
+	
+	cout<<azeem.size()<<endl;
+	cout<<azeem.top()<<endl;
+	cout<<azeem.empty()<<endl;
+}
