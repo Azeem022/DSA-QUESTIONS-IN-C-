@@ -3159,3 +3159,117 @@ int main()
 	cout<<x<<" ";
 }
 
+
+//==============================Circular Queue==============================================
+#include<iostream>
+using namespace std;
+
+class Queue
+{
+	int *arr;
+	int front, rear, size;
+	
+	public:
+		//Constructor
+		Queue(int n)
+		{
+			arr =new int[n];
+			size = n;
+			front = rear = -1;
+		}
+	
+	//If queue is empty or not
+	
+	bool IsEmpty()
+	{
+		return front ==-1;
+	}
+	
+	//Queue if full or not
+	
+	bool IsFull()
+	{
+		return (rear+1)%size == front;
+	}
+	
+	//push element into queue
+	
+	void push(int x)
+	{
+		//Empty
+		if(IsEmpty())
+		{
+			cout<<"Pushed "<<x<<" into the Queue\n";
+			front = rear = 0;
+			arr[0] = x;
+			return;
+		}
+		
+		//full
+		else if(IsFull())
+		{
+			cout<<"Queue Overflow\n";
+			return;
+		}
+		
+		// insert
+		
+		else
+		{
+			rear = (rear+1)%size;
+			arr[rear] = x;
+			cout<<"Pushed "<<x<<" into the Queue\n";
+		}
+	}
+ 	
+ 	void pop()
+ 	{
+ 		//empty
+ 		if(IsEmpty())
+ 		{
+ 			cout<<"Queue underflow\n";
+ 			return;
+		}
+		
+		else
+		{
+			if(front == rear)
+			{
+				cout<<"Poped "<<arr[front]<<" from the Queue\n";
+				front = rear = -1;
+			}
+			else
+			{
+				cout<<"Poped "<<arr[front]<<" from the Queue\n";	
+				front = (front+1)%size;
+			}
+		}
+	}
+	
+	//starting mai konsa element rkkha hai
+	int Start()
+	{
+		if(IsEmpty())
+		{
+			cout<<"Queue is empty \n";
+			return -1;
+		}
+		else
+		{
+			return arr[front]; 
+		}
+	}
+ 	
+};
+
+int main()
+{
+	Queue q(5);
+	q.push(5);
+	q.push(15);
+	q.push(25);
+	q.push(35);
+	q.pop();
+	q.push(45);
+	q.push(55);
+}
