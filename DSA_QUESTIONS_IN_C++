@@ -3674,7 +3674,7 @@ class Dequeue
 		}
 		else
 		{
-			cout<<"Popped "<<arr[front]<<" from dequeue\n";
+			cout<<"Popped "<<arr[rear]<<" from dequeue\n";
 			//single element
 			if(front == rear)
 			{
