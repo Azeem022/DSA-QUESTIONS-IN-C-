@@ -1565,52 +1565,6 @@ int main() {
 }
 
 
-
-//===========================ADD A NODE AT THE FRONT OF LINKED LIST===================
-#include<iostream>
-using namespace std;
-
-//Linkedlist Node
-struct node{
-	int data;
-	node *next;
-};
-
-void printlist(node *head)
-{
-	int count = 0;
-	while(head!=NULL)
-	{
-		cout<<head->data<<endl;
-		head = head->next;
-		count++;
-	}
-	cout<<"No. of element in linked list is : "<<count<<endl;
-}
-
-void push(node **head_ref, int newData)  //head_ref bhi head ka address store kr rha iska mtlb head_ref bhi indirectly head hi hai
-{
-	node *newNode = new node();
-	newNode -> data = newData;
-	newNode -> next = *head_ref;
-	*head_ref = newNode;
-}
-int main()
-{
-	node *head = NULL;
-	push(&head, 5);
-	push(&head, 7);
-	push(&head, -3);
-	printlist(head);
-}  
-
-OUTPUT IS :
--3
-7
-5
-No. of element in linked list is : 3
-
-
 // =======================INSERTION ON LINKED LIST AT START =====================
 #include<iostream>
 using namespace std;
@@ -1631,10 +1585,7 @@ int main()
 {
 	Node *Head;
 	Head = NULL;
-//	Head = new Node(4);
-//	cout<<Head->data<<endl;
-//	cout<<Head->next<<endl;
-	
+
 	int arr[] = {2,4,6,8,10};
 	//Insert a node at begning.
 	
@@ -1688,9 +1639,6 @@ int main()
 {
 	Node *Head, *Tail;
 	Tail = Head = NULL;
-//	Head = new Node(4);
-//	cout<<Head->data<<endl;
-//	cout<<Head->next<<endl;
 	
 	int arr[] = {2,4,6,8,10};
 	//Insert a node at begning.
@@ -1773,6 +1721,72 @@ int main()
 	}
 	cout<<"NULL";
 }
+
+//============================insertion at random position===============================
+#include<iostream>
+using namespace std;
+
+class Node
+{
+	public:
+	int data;
+	Node *next;
+	
+	Node(int value)
+	{
+		data = value;
+		next = NULL;
+	} 
+};
+
+int main()
+{
+	Node *Head, *Tail;
+	Head = Tail = NULL;
+	
+	int arr[5] = {2,4,6,8,10};
+	int pos = 2;
+	for(int i=0;i<5;i++)
+	{
+		if(Head==NULL)
+	    {
+		    Head = new Node(arr[i]);
+		    Tail = Head;
+	    }
+	
+	    else
+	    {
+		    Tail->next = new Node(arr[i]);
+		    Tail =Tail->next;
+//	   	    Head = Tail;
+	    }
+	    
+	    
+//	cout<<"Null";
+	}
+	Node *curr = Head;
+	    Node *prev = NULL ;
+	    
+	    for(int i=0;i<pos;i++)
+	    {
+	    	prev=curr;
+	    	curr = curr->next;
+		}
+		
+		Node *NewNode = new Node(5);
+		
+		prev->next = NewNode;
+		NewNode->next = curr;
+	    
+	Node *Temp = Head;
+	while(Temp!=NULL)
+	{
+		cout<<Temp->data<<"->";
+		Temp = Temp->next;
+	}
+	cout<<"NULL";
+}
+
 
 
 // =======================INSERTION ON LINKED LIST AT BEGNING USING RECURSION =====================
