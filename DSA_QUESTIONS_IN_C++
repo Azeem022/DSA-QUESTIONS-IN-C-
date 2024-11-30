@@ -3833,3 +3833,98 @@ int main()
 	Node*root;
 	root = BinaryTree();
 }
+
+
+//===================Binary tree=================================
+//============PreOrder,InOrder and PostOrder Traversal============
+#include<iostream>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node *left, *right;
+		
+		Node(int value)
+		{
+			left = right = NULL;
+			data = value;
+		}
+};
+
+void preOrder(Node*root)
+{
+	if(root == NULL)
+	return;
+	
+	//Node
+	cout<<root->data<<" ";
+	//left
+	preOrder(root->left);
+	//right
+	preOrder(root->right);
+}
+
+void InOrder(Node*root)
+{
+	if(root == NULL)
+	return;
+	
+	//left
+	InOrder(root->left);
+	//Node
+	cout<<root->data<<" ";
+	//right
+	InOrder(root->right);
+}
+
+void postOrder(Node*root)
+{
+	if(root == NULL)
+	return;
+	
+	//left
+	postOrder(root->left);
+	//right
+	postOrder(root->right);
+	//Node
+	cout<<root->data<<" ";
+}
+
+Node *BinaryTree()
+{
+	int x;
+	cin>>x;
+	if(x==-1)
+	return NULL;
+	
+	Node*temp =new Node(x);
+	//LEFT SIDE CREATE     
+	cout<<"Enter the left child of :"<<x<<" : ";
+	temp->left = BinaryTree();
+	//Right side create
+	cout<<"Enter the right child of :"<<x<<" : ";
+	temp->right = BinaryTree();
+	return temp;
+}
+
+int main()
+{
+	//Tree creation code
+	cout<<"Enter the root node :"<<endl;
+	Node*root;
+	root = BinaryTree();
+	
+	//preOrder print
+	cout<<"PreOrder : ";
+	preOrder(root);
+	
+	//InOrder print
+	cout<<"\nInOrder : ";
+	InOrder(root);
+	
+	//PostOrder print
+	cout<<"\nPostOrder : ";
+	postOrder(root);
+}
