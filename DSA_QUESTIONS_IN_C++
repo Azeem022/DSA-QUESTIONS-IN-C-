@@ -3930,7 +3930,7 @@ int main()
 }
 
 
-//===================Binary search tree print with inorder traversal=================================
+//===================Inorder traversal Binary search tree  =================================
 #include<iostream>
 using namespace std;
 
