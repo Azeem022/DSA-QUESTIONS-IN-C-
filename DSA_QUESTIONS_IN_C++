@@ -1,27 +1,3 @@
-//####################################### QUESTION CONVERT DECIMAL TO BINARY ####################################################################
-#include<iostream>
-#include<math.h>
-using namespace std;
-int main()
-{
-	int n;
-	cout<<"Enter the number"<<n<<endl;
-	cin>>n;
-	int ans = 0;
-	int i = 0;
-	while(n!=0)
-	{
-		int bit = n & 1;
-		ans = (bit * pow(10,i)+ans);
-		n = n>>1;
-		i++;
-	}
-	cout<<"Answer is :"<<ans<< endl;
-	return 0;
-}
-
-                          OR         OR         OR          OR            OR           OR             OR             OR
-
 
 //################################## DECIMAL TO BINARY #################################################
 #include<iostream>
@@ -47,58 +23,7 @@ int main()
 	return 0;
 }
 
-TRICK FOR CONVERSION OF BINARY TO DECIMAL AND DECIMAL TO BINARY ONLY YOU HAVE TO CHANGE 2 IN PLACE OF 10 AND 10 IN PLACE OF 2.
-
-//#######################################QUESTION BINARY TO DECIMAL####################################################################
-#include<iostream>
-#include<math.h>
-using namespace std;
-int main()
-{
-	int n;
-	cout<<"Enter the number"<<n<<endl;
-	cin>>n;
-	int ans = 0;
-	int i = 0;
-	while(n!=0)
-	{
-		int digit = n%10;
-		if(digit == 1)
-		{
-			ans = ans + pow(2,i);
-		}
-		n = n/10;
-		i++;
-	}
-	cout<<"Answer is :"<<ans<< endl;
-	return 0;
-}
-
-                                      OR         OR           OR            OR                 OR                  OR                     OR
-
-//################################## BINARY TO DECIMAL #################################################
-#include<iostream>
-using namespace std;
-int main()
-{
-    int num;
-    cout<<"Enter the number:";
-    cin>>num;
-    int rem, ans=0,mul=1;
-    while(num>0)
-    {
-    	//remainder
-    	rem = num%10;
-    	//quotient
-    	num = num/10;
-    	//ans 
-    	ans= rem*mul+ans;
-    	//mul
-    	mul=mul*2;
-	}
-	cout<<"Answer is :"<<ans;
-	return 0;
-}
+NOTE ->  TRICK FOR CONVERSION OF BINARY TO DECIMAL AND DECIMAL TO BINARY ONLY YOU HAVE TO CHANGE 2 IN PLACE OF 10 AND 10 IN PLACE OF 2.
 
 
 //#######################################QUESTION GIVE AN INTEGER NUMBER N,RETURN THE DIFFERENCE BETWEEN THE PRODUCT OF ITS DIGIT AND SUM OF ITS DIGIT####################################################################
