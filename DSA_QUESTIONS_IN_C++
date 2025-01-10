@@ -4395,3 +4395,41 @@ int main()
 		cout<<endl;
 	}
 }
+
+
+===================================ADJACENT MATRIX UNDIRECTED NO_WEIGHTED GRAPH====================================
+#include<iostream>
+#include<vector>
+using namespace std;
+
+//Adjacent matrix
+//UNDIRECTED NO_WEIGHTED GRAPH
+
+int main()
+{
+	int vertex, edges;
+	cout<<"Enter the vertex you want : "<<endl;
+	cin>> vertex;
+	cout<<"Enter the Edges you want : "<<endl;
+	cin>> edges;
+	
+	vector<int>AdjList[vertex];
+	
+	int u , v;
+	for(int i=0; i<edges;i++){
+		cin >> u >> v;
+		AdjList[u].push_back(v);
+		AdjList[v].push_back(u);
+	} 
+	
+	
+	//print the list
+	for(int i=0;i<vertex;i++)
+	{
+		cout<<i<<" -> ";
+		for(int j=0;j<AdjList[i].size();j++)
+		cout<<AdjList[i][j]<<" ";
+		
+		cout<<endl;
+	}
+}
